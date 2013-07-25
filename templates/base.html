@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="/static/css/base.css">
+    {% block head %}
+    {% end %}
+</head>
+<body>
+    <div id="navBar">
+        <ul>
+            <li>
+                <a href="/"><img id="navLogo" src="/static/images/brmscc_logo.jpg" alt="BRMSCC Logo" /></a>
+            </li>
+            <li class="links"><a href="/intro" class="black_button">INTRO</a></li>
+            <li class="links"><a href="/next_rally" class="yellow_button">NEXT RALLY</a></li>
+            <li class="links"><a href="/schedule" class="black_button">SCHEDULE</a></li>
+            <li class="links"><a href="/tutorial" class="black_button">TUTORIAL</a></li>
+            <li class="links"><a href="/club_info" class="black_button">CLUB INFO</a></li>
+        </ul>
+    </div>
+    <div id="main_content">
+    <div style="padding-top: 30px;"></div>
+    <div id="main">
+        <div id="page_title">{% block page_title %}{% end %}</div>
+        {% block content %}
+            <div style="text-align:center">{{ msg }}</div>
+        {% end %}
+    </div>
+    </div>
+{% block footer %}{% end %}
+</body>
+</html>

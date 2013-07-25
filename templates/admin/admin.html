@@ -1,0 +1,32 @@
+{% extends "../base.html" %}
+
+{% block page_title %}
+<h1>Administration</h1>
+{% end %}
+
+{% block content %}
+    <ul style="float:left; list-style-type: none; width: 40%">
+        <li><a href="/api/v1/rallies/create">Create new rally</a></li><br />
+        {% for item in resources['rallies'] %}
+        <li>
+            <a href="/api/v1/rallies/{{ item['_id'] }}">{{ item['start_datetime'] }} - {{ item['title'] }}</a>
+        </li>
+        {% end %}
+    </ul>
+    <ul style="float:left; list-style-type: none; width: 40%">
+        <li><a href="/api/v1/meetings/create">Create new meeting</a></li><br />
+        {% for item in resources['meetings'] %}
+        <li>
+            <a href="/api/v1/meetings/{{ item['_id'] }}">{{ item['start_datetime'] }}</a>
+        </li>
+        {% end %}
+    </ul>
+    <ul style="float:left; list-style-type: none; width: 40%">
+        <li><a href="/api/v1/simplepages/create">Create new simple page</a></li><br />
+        {% for item in resources['simplepages'] %}
+        <li>
+            <a href="/api/v1/simplepages/{{ item['_id'] }}">{{ item['alt_id'] }} - {{ item['title'] }}</a>
+        </li>
+        {% end %}
+    </ul>
+{% end %}

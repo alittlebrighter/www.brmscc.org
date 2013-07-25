@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>{{ rally['title'] }}</title>
+{% end %}
+
+{% block page_title %}
+<h3>Blue Ridge Mountain Sports Car Club presents:</h3>
+<h1>{{ rally['title'] }}</h1><br />
+{% end %}
+
+{% block content %}
+<div id="rally" style="width: 75%; margin-right: auto; margin-left: auto">
+    <div>
+        <strong class="label">Date:</strong>
+        {{ rally['start_date'] }}
+    </div><br />
+    <div>
+        <strong class="label">Registration:</strong>
+        {{ rally['reg_time'] }} and the first car leaves at {{ rally['start_time'] }}.  Rally fee is {{ rally['registration_fee'] }}.
+        
+    </div>
+    <div>
+        <strong class="label">Start Location:</strong>
+        {{ rally['start_location'] }}Coordinates: <a href="http://www.mapquest.com/?q={{ rally['latitude'] }},{{ rally['longitude'] }}">
+			{{ rally['latitude'] }}, {{ rally['longitude'] }}
+        </a><br />
+    </div><br />
+    <div>
+        <strong class="label">Description:</strong>
+        {% if len(rally['rallymaster'].split(' ')) > 2 %}
+            Rallymasters {{ rally['rallymaster'] }} tell us...
+        {% else %}
+            Rallymaster {{ rally['rallymaster'] }} tells us...
+        {% end %}
+        {{ rally['description'] }}
+    </div>
+</div>
+<br />
+<br />
+<div>
+    <strong class="label">What beginners should bring with them:</strong>
+    <p>
+        For starters - there should be two of you in the car: a driver, and a navigator (who isn't inclined to get car-sick reading while moving, or has an antidote for it). 
+    </p>
+    <p>
+        Bring a mechanically sound car* that has a tenths -reading odometer (a resettable trip odometer can be a help), a clipboard, a four function calculator, several working pens, a set of highlighters (for marking up the route instructions) and post-it notes.  
+    </p>
+    <p>
+        If you can choose between a mechanical odometer that "rolls" and a digital display, the     mechanical will enable you to interpolate to the hundredths. If you only have the digital tenths, then you'll have to do a lot more "guessing" in between the numbers clicking over. We have folks who have gotten good at this with practice! 
+    </p>
+    <p>
+        While every team has their own procedure, it's useful to be able to highlight things like speed changes, and free zones (remember - there is a tutorial to get you started!) so that "on the road" it helps you remember them better.  The post-its are to stick on your dashboard to remind the driver of the assigned speeds and what the active course following priorities are.  
+    </p>
+    <p>
+        Also - having a good map of the area that includes secondary (and tertiary roads) can be very helpful if you get lost and can't regain the rally course. 
+    </p>
+    <p>
+        *While a cell phone and a AAA membership can't hurt, a lot of the time, we'll be traveling on roads that are well off the beaten track, and you may not have much of a description of where you are!  "Well - we got here by turning left after "Snodgrass", then right at T, and left by protection... "  While a GPS unit probably won’t help you very much while running the rally, it may be very useful for telling AAA where you are if you break down.
+    </p>
+</div>
+{% end %}

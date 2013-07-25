@@ -1,0 +1,32 @@
+{% extends "../base.html" %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="/static/css/anytime.c.css" />
+{% end %}
+
+{% block page_title %}
+<h1 id="resource" resource_id="create" action="POST">{{ page_title.capitalize() }}</h1>
+{% end %}
+
+{% block content %}
+<form id="form">
+    <label>
+        Start Date and Time:
+        <input id="start_datetime" class="datetime" type="text" name="start_datetime" />
+    </label><br /><br />
+    <label>
+        Description:
+        <textarea name="description"></textarea>
+    </label><br /><br />
+</form>
+
+<h3 id="click" class="black_button">SUBMIT</h3>
+<div id="response"></div>
+{% end %}
+
+{% block footer %}
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="/static/js/anytime.c.js"></script>
+<script src="/static/js/ckeditor/ckeditor.js"></script>
+<script src="/static/js/form.js"></script>
+{% end %}

@@ -1,0 +1,60 @@
+{% extends "../base.html" %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="/static/css/anytime.c.css" />
+{% end %}
+
+{% block page_title %}
+<h1 id="resource" resource_id="create" action="POST">{{ page_title.capitalize() }}</h1>
+{% end %}
+
+{% block content %}
+<form id="form">
+    <label>
+        Title:
+        <input type="text" name="title" />
+    </label><br /><br />
+    <label>
+        Rallymaster(s):
+        <input type="text" name="rallymaster" />
+    </label><br /><br />
+    <label>
+        Start Date and Time:
+        <input id="start_datetime" class="datetime" type="text" name="start_datetime" />
+    </label><br /><br />
+    <label>
+        Registration Date and Time:
+        <input id="registration_datetime" class="datetime" type="text" name="registration_datetime" />
+    </label><br />
+    <label>
+        Fee:
+        <input type="text" name="registration_fee" value="$10" />
+    </label><br /><br />
+    <label>
+        Latitude (decimal):
+        <input type="text" name="latitude" />
+    </label>
+    <label>
+        Longitude (decimal):
+        <input type="text" name="longitude" />
+    </label><br /><br />
+    <label>
+        Start Location:
+        <textarea class="ckeditor" name="start_location"></textarea>
+    </label><br /><br />
+    <label>
+        Description:
+        <textarea class="ckeditor" name="description"></textarea>
+    </label><br /><br />
+</form>
+
+<h3 id="click" class="black_button">SUBMIT</h3>
+<div id="response"></div>
+{% end %}
+
+{% block footer %}
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="/static/js/anytime.c.js"></script>
+<script src="/static/js/ckeditor/ckeditor.js"></script>
+<script src="/static/js/form.js"></script>
+{% end %}

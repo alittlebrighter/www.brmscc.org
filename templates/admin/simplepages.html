@@ -1,0 +1,33 @@
+{% extends "../base.html" %}
+
+{% block head %}
+{% end %}
+
+{% block page_title %}
+<h1 id="resource" resource_id="create" action="POST">{{ page_title }}</h1>
+{% end %}
+
+{% block content %}
+<form id="form">
+    <label>
+        Page address ('index' for landing page, otherwise what shows up at the end of the URL):
+        <input type="text" name="alt_id">
+    </label><br /><br />
+    <label>
+        Page Title:
+        <input type="text" name="title">
+    </label><br /><br />
+        Content:
+        <input type="textarea" name="content">
+    </label><br /><br />
+</form>
+
+<h3 id="click" class="black_button">SUBMIT</h3>
+<div id="response"></div>
+{% end %}
+
+{% block footer %}
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="/static/js/ckeditor/ckeditor.js"></script>
+<script src="/static/js/form.js"></script>
+{% end %}

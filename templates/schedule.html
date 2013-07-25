@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>{{ year }} {{ page_title }}</title>
+{% end %}
+
+{% block page_title %}
+<h1>{{ year }} {{ page_title }}</h1>
+{% end %}
+
+{% block content %}
+<p>
+    Regular club events are between 50-100 miles in length, and may include some small sections of unpaved (public) roads. All dates listed below should be considered tentative, unless the event is being coordinated with another organization. BRMSCC events are regularly open to all; drivers must be licensed, insured and over 18. New folks are encouraged to bring extra folks!
+</p>
+<p>
+    No pre-registration is required unless noted. Cost is generally $10.00 per car,  special events and co-sponsored events may have different fees.
+</p>
+<p>
+    For each BRMSCC rally, a matching pair of trophies (one for driver, one for navigator) will be awarded for best overall score for the event, and one "place" trophy will be awarded for every four cars in each class. Novice classes are separate from experienced classes.
+</p>
+<ul style="list-style-type: none; width: 80%; margin-right: auto; margin-left: auto;">
+{% for rally in rallies %}
+    <li><strong>{{ rally['start_datetime'] }}</strong> - <a href="/rallies/{{ str(rally['_id']) }}">{{ rally['title'] }}</a> - rallymaster(s) {{ rally['rallymaster'] }}</li>
+{% end %}
+</ul>
+<p>
+    BRMSCC is now on Twitter. But the best part is, you don’t have to register for Twitter to get updates. 
+    You can just go directly to the page at <a href="http://twitter.com/brmscc">http://twitter.com/brmscc</a>. Also once you go there, you can subscribe to the RSS feed of twitter updates and get them sent to your favorite news reader.
+</p>
+<p>
+    <strong>BRMSCC Club meeting dates for {{ year }}:</strong><br />
+    Food and natterings at 6:30, meeting business starts at 7:00 PM: 
+</p>
+<ul style="list-style-type: none; width: 80%; margin-right: auto; margin-left: auto;">
+{% for meeting in meetings %}
+    <li><strong>{{ meeting['start_datetime'] }}</strong> - {{ meeting['description'] }}</li>
+{% end %}
+</ul>
+{% end %}

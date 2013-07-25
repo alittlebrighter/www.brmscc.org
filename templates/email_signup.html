@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+<h1>Email {{ action.capitalize() }}</h1>
+{% end %}
+
+{% block content %}
+<div style="text-align:center">
+<p>{{ msg }}</p>
+<form id="form">
+    <label>
+        Email address:
+        <input id="email_addr" type="text" name="email">
+    </label>
+</form>
+
+<h3 id="click" class="black_button">SUBMIT</h3>
+<div id="result"></div>
+</div>
+{% end %}
+
+{% block footer %}
+<script>
+
+$.fn.serializeObject = function() {
+    var o = Object.create(null),
+        elementMapper = function(element) {
+            element.name = $.camelCase(element.name);
+            return element;
+        },
+        appendToResult = function(i, element) {
+            var node = o[element.name];
+
+            if ('undefined' != typeof node && node !== null && element.value != '') {
+                o[element.name] = node.push ? node.push(element.value) : [node, element.value];
+            } else {
+                o[element.name] = element.value;
+            }
+        };
+
+    $.each($.map(this.serializeArray(), elementMapper), appendToResult);
+    return o;
+};
+
+$('#click').click(function () {
+    
+    // make ajax call to insert new resource
+    $.ajax({
+        url: '/email/{{ action }}',
+        cache: false,
+        type: 'POST',
+        data : JSON.stringify($('#form').serializeObject()),
+        success: function() {
+	    if ('{{ action }}' == 'subscribe') {
+                $('#result').text('An email has been sent to ' + $('#email_addr').attr('value') + '.  Please click the link inside the email to verify your email address.');
+	    }
+	    else {
+                $('#result').text('You have been {{ action }}d');
+            }
+        }
+    });
+});
+</script>
+{% end %}
