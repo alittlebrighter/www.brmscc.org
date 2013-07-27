@@ -8,3 +8,7 @@ Python library dependencies are as follows and can all be obtained with pip:
 * [redis-py v2.7.4](https://github.com/andymccurdy/redis-py)
 
 Currently all page rendering is server side and the admin pages are a bit of a mess.  I am in the process of converting the Python to a simplified, rest API and at the same time beef up the client side a bit with [Angular](http://angularjs.org/) or [Ractive](http://www.ractivejs.org/).  I also need to make the site responsive which will probably happen before the switch to the rest API.
+
+Run it with 
+    $ python3 server.py
+Then go to http://localhost:8888
